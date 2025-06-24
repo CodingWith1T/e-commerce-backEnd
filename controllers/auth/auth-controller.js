@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
                 email: user.email,
                 username: user.userName,
             },
-            "ThinkAcademies", // Use .env for secret keys
+            process.env.CLIENT_SECRET_KEY, // Use .env for secret keys
             { expiresIn: '60m' }
         );
 
@@ -120,7 +120,7 @@ const authMiddleware = async (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, "ThinkAcademies");
+        const decoded = jwt.verify(token, process.env.CLIENT_SECRET_KEY);
         req.user = decoded;
         next();
     } catch (error) {
