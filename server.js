@@ -22,49 +22,20 @@ mongoose
     .then(() => console.log("MongoDB Connected"))
     .catch((error) => console.log(error));
 
-const whitelist = [
-    "https://e-commerce-frontend-production-63cd.up.railway.app",
-    "http://localhost:5173",
-];
-
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin || whitelist.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+// original
+app.use(cors({
+    origin: "https://e-commerce-frontend-production-63cd.up.railway.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "Cache-Control",
-      "Expires",
-      "Pragma",
+        "Content-Type",
+        "Authorization",
+        "Cache-Control",
+        "Expires",
+        "Pragma",
     ],
     credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
-
-// original
-// app.use(cors({
-//     origin: "https://e-commerce-frontend-production-63cd.up.railway.app",
-//     methods: ["GET", "POST", "DELETE", "PUT"],
-//     allowedHeaders: [
-//         "Content-Type",
-//         "Authorization",
-//         "Cache-Control",
-//         "Expires",
-//         "Pragma",
-//     ],
-//     credentials: true,
-//     optionSuccessStatus: 200
-// }));
+    optionSuccessStatus: 200
+}));
 
 
 app.use(express.json());
