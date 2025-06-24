@@ -7,6 +7,8 @@ const adminProductsRouter = require('./routes/admin/products-routes')
 const shopProductsRouter = require('./routes/shop/products-route')
 const shopCartRouter = require('./routes/shop/cart-routes')
 const shopAddressRouter = require('./routes/shop/address-routes')
+const shopSearchRouter = require('./routes/shop/search-route')
+const commonFeatureRoutes = require('./routes/common/features-routes')
 require('dotenv').config();
 
 const app = express();
@@ -41,6 +43,9 @@ app.use('/api/admin/products', adminProductsRouter);
 app.use('/api/shop/products', shopProductsRouter);
 app.use('/api/shop/cart', shopCartRouter);
 app.use('/api/shop/address', shopAddressRouter);
+app.use('/api/shop/search', shopSearchRouter);
+
+app.use('/api/common/feature', commonFeatureRoutes);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
 

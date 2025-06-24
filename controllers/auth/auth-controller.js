@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
                 email: user.email,
                 username: user.userName,
             },
-            process.env.CLIENT_SECRET_KEY, // Use .env for secret keys
+            "ThinkAcademies", // Use .env for secret keys
             { expiresIn: '60m' }
         );
 
@@ -93,7 +93,7 @@ const loginUser = async (req, res) => {
         console.error("Login error:", error);
         return res.status(500).json({
             success: false,
-            message: 'An error occurred while logging in',
+            message: 'An error occurred while logging in !!!',
         });
     }
 };
@@ -120,7 +120,7 @@ const authMiddleware = async (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.CLIENT_SECRET_KEY);
+        const decoded = jwt.verify(token, "ThinkAcademies");
         req.user = decoded;
         next();
     } catch (error) {
