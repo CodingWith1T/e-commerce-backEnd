@@ -23,7 +23,7 @@ mongoose
     .catch((error) => console.log(error));
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://e-commerce-frontend-production-63cd.up.railway.app/",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
         "Content-Type",
